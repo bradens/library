@@ -62,7 +62,7 @@ export default /*public final*/ class PDF417ScanningDecoder {
 
   /*final*/ static CODEWORD_SKEW_SIZE: int = 2;
 
-  /*final*/ static MAX_ERRORS: int = 3;
+  /*final*/ static MAX_ERRORS: int = 30;
   /*final*/ static MAX_EC_CODEWORDS: int = 512;
   /*final*/ static errorCorrection: ErrorCorrection = new ErrorCorrection();
 
@@ -634,6 +634,7 @@ export default /*public final*/ class PDF417ScanningDecoder {
       numECCodewords < 0 ||
       numECCodewords > PDF417ScanningDecoder.MAX_EC_CODEWORDS) {
       // Too many errors or EC Codewords is corrupted
+      console.log("ABout to throw because of correctErrors", erasures.length, numECCodewords)
       throw ChecksumException.getChecksumInstance();
     }
     return PDF417ScanningDecoder.errorCorrection.decode(codewords, numECCodewords, erasures);

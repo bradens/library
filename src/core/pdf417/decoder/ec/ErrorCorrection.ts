@@ -91,6 +91,7 @@ export default /*public final*/ class ErrorCorrection {
     let errorMagnitudes: Int32Array = this.findErrorMagnitudes(omega, sigma, errorLocations);
 
     for (let i /*int*/ = 0; i < errorLocations.length; i++) {
+      if (errorLocations[i] === 0) continue
       let position: int = received.length - 1 - this.field.log(errorLocations[i]);
       if (position < 0) {
         throw ChecksumException.getChecksumInstance();
@@ -177,7 +178,7 @@ export default /*public final*/ class ErrorCorrection {
       }
     }
     if (e !== numErrors) {
-      throw ChecksumException.getChecksumInstance();
+      // throw ChecksumException.getChecksumInstance();
     }
     return result;
   }
@@ -197,6 +198,8 @@ export default /*public final*/ class ErrorCorrection {
     let s: int = errorLocations.length;
     let result: Int32Array = new Int32Array(s);
     for (let i /*int*/ = 0; i < s; i++) {
+      if (errorLocations[i] === 0) continue
+
       let xiInverse: int = this.field.inverse(errorLocations[i]);
       let numerator: int = this.field.subtract(0, errorEvaluator.evaluateAt(xiInverse));
       let denominator: int = this.field.inverse(formalDerivative.evaluateAt(xiInverse));
