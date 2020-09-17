@@ -112,6 +112,9 @@ var Encoder_1 = require("./core/qrcode/encoder/Encoder");
 exports.QRCodeEncoder = Encoder_1.default;
 var QRCode_1 = require("./core/qrcode/encoder/QRCode");
 exports.QRCodeEncoderQRCode = QRCode_1.default;
+// core/twod/pdf417
+var PDF417Reader_1 = require("./core/pdf417/PDF417Reader");
+exports.PDF417Reader = PDF417Reader_1.default;
 // core/twod/aztec
 var AztecReader_1 = require("./core/aztec/AztecReader");
 exports.AztecCodeReader = AztecReader_1.default;

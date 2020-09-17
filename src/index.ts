@@ -68,6 +68,9 @@ export { default as QRCodeDecoderErrorCorrectionLevel } from './core/qrcode/deco
 export { default as QRCodeEncoder } from './core/qrcode/encoder/Encoder';
 export { default as QRCodeEncoderQRCode } from './core/qrcode/encoder/QRCode';
 
+// core/twod/pdf417
+export { default as PDF417Reader } from './core/pdf417/PDF417Reader'
+
 // core/twod/aztec
 export { default as AztecCodeReader } from './core/aztec/AztecReader';
 
